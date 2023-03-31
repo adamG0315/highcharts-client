@@ -1,6 +1,10 @@
 import axios from "axios"
+import { productionApi } from "../config"
+
+
 
 const stocksApi = axios.create({
+    baseURL: productionApi,
     headers: { 'Content-Type': 'application/json' },
 })
 
