@@ -1,0 +1,14 @@
+.container {
+    width: 100%;
+    padding: 3rem;
+    margin: 0 8rem;
+    background-color: white;
+    box-shadow: 5px 10px 20px lightgrey;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 10px;
+      margin: 0;
+    }
+  }

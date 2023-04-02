@@ -3,18 +3,10 @@ import { useQuery } from "react-query";
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
 import { REFETCH_INTERVAL } from '../../api/constants';
-import SpinnerComponent from '../Spinner';
+import SpinnerComponent from '../spinner/Spinner';
 import {createChartData} from "../../api/utils"
 import ErrorComponent from '../error/ErrorComponent';
-
-const styles = {
-	graphContainer: {
-		height: '70vh',
-		padding: '3rem',
-		backgroundColor: 'white',
-		borderRadius: '2rem'
-	}
-}
+import StockGraphCSS from "./StockgGraph.module.css"
 
 const StockGraph:React.FC = () => {
 	const {isLoading, isError, data} = useQuery(
@@ -37,7 +29,10 @@ const StockGraph:React.FC = () => {
 	const options: Highcharts.Options = {
 		title: {
 			text: 'AAPL Stock Price',
-		  },
+		},
+		scrollbar: {
+			enabled: false
+		},
 		yAxis: [
 			{
 				title: {
@@ -68,11 +63,11 @@ const StockGraph:React.FC = () => {
 				data: volume,
 				yAxis: 1,
 			}
-		]
+		],
 	};	
 
 	return (
-		<div style={styles.graphContainer}>
+		<div className={StockGraphCSS.container}>
 			<HighchartsReact 
 				options={options}
 				highcharts={Highcharts}
